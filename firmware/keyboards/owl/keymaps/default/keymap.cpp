@@ -20,75 +20,119 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #if KEYBOARD_SIDE == LEFT
 std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
     KEYMAP2ARRAY(KEYMAP(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    MOVE,    \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    SYMB,    \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_ \
-  ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC \ 
+  KC_ESC, KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    \
+  KC_GRV,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    \
+  KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,    MOVE,    \
+  KC_ESC,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    SYMB,   KC_NO,\
+  KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LWIN, KC_CAPS,\
+                  KC_NO, KC_LALT, KC_LCTL, KC_BSPC,  KC_TAB,  KC_DEL,\
+                                     NUMS,    MDIA,  KC_SPC,  KC_ENT\
     ));
-
-
-/*
-[_QWERTY] = LAYOUT( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL, \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-  ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-),
-
-layer1 = lower
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,S(KC_NUHS),S(KC_NUBS),_______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
-
-  layer 2 = raise
-   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
-
-layer3 = adjust
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
-  _______, RESET  , RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI, RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI, _______, KC_DEL, \
-  _______, _______, _______, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
-
-*/
 
 
 void setupKeymap() {
 
-uint32_t layer1[MATRIX_ROWS][MATRIX_COLS] =
+/*
+uint32_t TEMPLATE[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, \
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    \
-  KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, _______  \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);*/
+
+uint32_t main[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_ESC, KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    \
+  KC_GRV,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    \
+  KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,    MOVE,    \
+  KC_ESC,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    SYMB,   KC_NO,\
+   KC_NO,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LWIN, KC_CAPS,\
+                  KC_NO, KC_LALT, KC_LCTL, KC_BSPC,  KC_TAB,  KC_DEL,\
+                                     NUMS,    MDIA,  KC_SPC,  KC_ENT \
 );
 
-uint32_t layer2[MATRIX_ROWS][MATRIX_COLS] =
+uint32_t symb[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    \
-  KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, _______ \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
 );
 
-uint32_t layer3[MATRIX_ROWS][MATRIX_COLS] =
+uint32_t game[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    \
-  _______, _______, _______, _______, _______, _______,  \
-  _______, _______, _______, _______, _______, _______,\
-  KC_TRNS, _______, _______, _______, _______, _______, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, PRINT_BATTERY \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
 );
+
+
+uint32_t mdia[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);
+
+uint32_t nums[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);
+
+uint32_t move[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);
+
+uint32_t tap[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_LPRN, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);
+
+uint32_t hold[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+  KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
+                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS\
+);
+
 
 /*
      * add the other layers on the regular presses.
@@ -97,9 +141,14 @@ uint32_t layer3[MATRIX_ROWS][MATRIX_COLS] =
     {
         for (int col = 0; col < MATRIX_COLS; ++col)
         {
-            matrix[row][col].addActivation(_L1, Method::PRESS, layer1[row][col]);
-            matrix[row][col].addActivation(_L2, Method::PRESS, layer2[row][col]);
-            matrix[row][col].addActivation(_L3, Method::PRESS, layer3[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::PRESS, main[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::MT_TAP, tap[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::MT_HOLD, hold[row][col]);
+            matrix[row][col].addActivation(_SYMB, Method::PRESS, symb[row][col]);
+            matrix[row][col].addActivation(_GAME, Method::PRESS, game[row][col]);
+            matrix[row][col].addActivation(_MDIA, Method::PRESS, mdia[row][col]);
+            matrix[row][col].addActivation(_NUMS, Method::PRESS, nums[row][col]);
+            matrix[row][col].addActivation(_MOVE, Method::PRESS, move[row][col]);
         }
     }
 
@@ -110,45 +159,117 @@ uint32_t layer3[MATRIX_ROWS][MATRIX_COLS] =
 
 #if KEYBOARD_SIDE == RIGHT
 std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
-    {KEYMAP(
-  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL, \
-  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-    )};
+    KEYMAP2ARRAY(KEYMAP(
+             KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,    GAME,\
+              KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,\
+              MOVE,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,\
+    KC_NO,    SYMB,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,\
+  KC_CAPS,  KC_TAB,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   KC_NO,\
+  KC_RWIN,  KC_ENT,  KC_SPC, KC_DOWN,   KC_UP, KC_RGHT, \
+   KC_DEL, KC_BSPC,    MDIA,   NUMS \
+    ));
 
 
 void setupKeymap() {
-
-uint32_t layer1[MATRIX_ROWS][MATRIX_COLS] =
+/*
+uint32_t template[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
-   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
-   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
-   KC_F12,S(KC_NUHS),S(KC_NUBS),_______, _______, _______, \
-   _______, KC_TRNS, _______,_______, _______, _______ \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+);*/
+
+uint32_t main[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP(
+             KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,    GAME,\
+              KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,\
+              MOVE,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,\
+    KC_NO,    SYMB,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,\
+  KC_CAPS,  KC_TAB,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   KC_NO,\
+  KC_RWIN,  KC_ENT,  KC_SPC, KC_RCTL, KC_RALT,   KC_NO, \
+   KC_DEL, KC_BSPC,    MDIA,    NUMS \
+    );
+
+uint32_t symb[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
 );
 
-uint32_t layer2[MATRIX_ROWS][MATRIX_COLS] =
+uint32_t game[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
- KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
- KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
- KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
- KC_F12,  KC_NUHS, KC_NUBS, _______, _______, _______, \
- _______, KC_TRNS, _______, _______, _______, _______ \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
 );
 
-uint32_t layer3[MATRIX_ROWS][MATRIX_COLS] =
+uint32_t mdia[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
- KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
- _______, _______, _______, _______, _______, KC_DEL, \
- _______, _______, _______, _______,  _______, _______, \
-  _______, _______, _______, _______, _______, _______, \
-  PRINT_BATTERY, KC_TRNS, _______, _______, _______, _______ \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
 );
 
+uint32_t nums[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+);
 
+uint32_t move[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+);
+
+uint32_t tap[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RPRN, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+);
+
+uint32_t hold[MATRIX_ROWS][MATRIX_COLS] =
+        KEYMAP( \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+);
 
 
 /*
@@ -158,9 +279,14 @@ uint32_t layer3[MATRIX_ROWS][MATRIX_COLS] =
     {
         for (int col = 0; col < MATRIX_COLS; ++col)
         {
-            matrix[row][col].addActivation(_L1, Method::PRESS, layer1[row][col]);
-            matrix[row][col].addActivation(_L2, Method::PRESS, layer2[row][col]);
-            matrix[row][col].addActivation(_L3, Method::PRESS, layer3[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::PRESS, main[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::MT_TAP, tap[row][col]);
+            matrix[row][col].addActivation(_MAIN, Method::MT_HOLD, hold[row][col]);
+            matrix[row][col].addActivation(_SYMB, Method::PRESS, symb[row][col]);
+            matrix[row][col].addActivation(_GAME, Method::PRESS, game[row][col]);
+            matrix[row][col].addActivation(_MDIA, Method::PRESS, mdia[row][col]);
+            matrix[row][col].addActivation(_NUMS, Method::PRESS, nums[row][col]);
+            matrix[row][col].addActivation(_MOVE, Method::PRESS, move[row][col]);
         }
     }
 

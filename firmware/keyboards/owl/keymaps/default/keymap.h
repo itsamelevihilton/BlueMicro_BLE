@@ -33,7 +33,8 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define MDIA LAYER_3
 #define NUMS LAYER_4
 #define MOVE LAYER_5
-#define TAP LAYER_6
+#define TAP  LAYER_6
+#define HOLD LAYER_7
 
 #define _MAIN 0
 #define _SYMB 1
@@ -41,8 +42,8 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define _MDIA 3
 #define _NUMS 4
 #define _MOVE 5
-#define _TAP 6
-
+#define _TAP  6
+#define _HOLD 7
 void setupKeymap();
 extern std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix;
 
