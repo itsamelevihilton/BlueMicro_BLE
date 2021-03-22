@@ -21,6 +21,8 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #include "hid_keycodes.h"
 #include "keyboard_config.h"
 #include "advanced_keycodes.h"
+#include "KeyScanner.h"
+#include "RotaryEncoder.h"
 #include "Key.h"
 #include <array>
 
@@ -46,5 +48,7 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define _HOLD 7
 void setupKeymap();
 extern std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix;
+extern DynamicState keyboardstate;
+void encoder_callback(int step);
 
 #endif /* KEYMAP_H */
