@@ -15,7 +15,7 @@ if exist %bmpprefix% (
     @echo NOT Found arm-none-eabi-gdb.exe
 )
 
-set filename=C:\GIT\BlueMicro_BLE\output\4x4Backpack\4x4Backpack-feather52832-4x4Platform-numpad-single.elf
+set filename=C:\Users\levih\Documents\Projects\Keyboards\BlueMicro_BLE\output\owl\owl-feather52832-nrfmicro-default-left.elf
 
 %bmpprefix%  %filename% -ex "target extended-remote \\.\%1"  -ex "mon swdp_scan" -ex "att 1" 
 
