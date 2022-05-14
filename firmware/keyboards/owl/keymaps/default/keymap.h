@@ -37,6 +37,7 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define MOVE LAYER_5
 #define TAP  LAYER_6
 #define HOLD LAYER_7
+#define TROUBLE LAYER_8
 
 #define _MAIN 0
 #define _SYMB 1
@@ -46,6 +47,7 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define _MOVE 5
 #define _TAP  6
 #define _HOLD 7
+#define _TROUBLE 8
 void setupKeymap();
 extern std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix;
 extern DynamicState keyboardstate;
